@@ -1,0 +1,54 @@
+-- Eventuell vorhandene Datenbank mit allen enthaltenen Daten löschen
+DROP DATABASE IF EXISTS `filmverwaltung`;
+
+-- --------------------------------------------------------
+
+-- Datenbank erstellen und auswaehlen, damit sie bearbeitet werden kann
+CREATE DATABASE `filmverwaltung`;
+USE `filmverwaltung`;
+
+-- --------------------------------------------------------
+
+-- Tabellenstruktur aufbauen, Primary Key festlegen und Daten einlesen
+
+-- Tabelle produktionsfirma erstellen, Spalten hinzufügen
+CREATE TABLE `produktionsfirma` (
+  `produktionsfirmaID` smallint(6) PRIMARY KEY AUTO_INCREMENT,
+  `bezeichnung` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Daten in Tabelle einfuegen
+INSERT INTO `produktionsfirma` (`produktionsfirmaID`, `bezeichnung`) VALUES
+(1, 'Bavaria Filmstudios'),
+(2, 'Great American Films'),
+(3, 'Touchstones Pictures');
+
+-- Tabelle film erstellen, Spalten hinzufügen
+CREATE TABLE `film` (
+  `filmID` smallint(6) PRIMARY KEY,
+  `titel` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `erscheinungsdatum` date DEFAULT NULL,
+  `produktionsfirmaID` smallint(6) NOT NULL,
+FOREIGN KEY (produktionsfirmaID) REFERENCES `produktionsfirma` (`produktionsfirmaID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Daten in Tabelle einfuegen
+INSERT INTO `film` (`filmID`, `titel`, `erscheinungsdatum`, `produktionsfirmaID`) VALUES
+(3000, 'Dirty Dancing', '1987-08-21', 2),
+(3001, 'Sister Act', '1992-05-29', 3);
+
+-- --------------------------------------------------------
+
+-- Tabellenstruktur erweitern
+
+-- Tabelle schauspieler erstellen, Spalten hinzufügen
+CREATE TABLE `schauspieler` (
+  `schauspielerID` smallint(6) PRIMARY KEY AUTO_INCREMENT,
+  `vorname` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nachname` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `herkunft` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Daten in Tabelle einfuegen
+INSERT INTO `schauspieler` (`schauspielerID`, `vorname`, `nachname`, `herkunft`) VALUES
+(1, 'Will', 'Smith', 'Amerika'),
+(2, 'Emma', 'Thomson', 'England');
