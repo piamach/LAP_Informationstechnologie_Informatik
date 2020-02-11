@@ -1,0 +1,34 @@
+<html>
+<body>
+
+<!--the form-data is sent to the page specified in the action attribute;
+ the method attribute "post" sends the form-data as an HTTP post transaction-->
+Anzeige der Festplatten aus der  ausw&auml;hlen Preisklasse: <br><br>
+<form action="uf11.php" method="post"> 
+
+<input type="radio" name="auswahl" value="1">
+bis inclusive 100.00 EUR <br><br>
+<input type="radio" name="auswahl" value="2">
+ab 100.00 EUR bis inclusive 150.00 EUR <br><br>
+<input type="radio" name="auswahl" value="3">
+ab 150.00 EUR <br><br>
+<!--input type="radio" defines a radio button for selecting one of many choices;
+each input field must have a name attribute to be submitted;
+the value attribute specifies the initial value of the element-->
+
+<input type="hidden" name="check" value="No"/>
+<!--input type="hidden" defines a hidden input field;
+includes data that cannot be seen or modified by users when a form is submitted-->
+<input type="checkbox" name="check" value="Yes"/>
+<!--input type="checkbox" defines a checkbox for selecting one or more of a limited number of choices;
+it shown as a square box that is ticked when activated-->
+Sortierung nach Hersteller <br><br>
+
+<input type="submit"> 
+<!--input type="submit" 	defines a submit button-->
+<input type="reset">
+<!--input type="reset" defines a reset button-->
+
+</form>
+</body>
+</html>
